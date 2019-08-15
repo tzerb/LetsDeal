@@ -22,6 +22,24 @@
                 document.getElementById("door3").classList.contains('doorChoosen')
         }
 
+        function isDoorWinnerOrChoosen(door) {
+            return document.getElementById(door).classList.contains('doorChoosen') || document.getElementById(door).classList.contains('winner')
+        }
+
+        function getDoorsNotChosenAndNotWinner() {
+            var a = [];
+            if (isDoorWinnerOrChoosen("door1")) {
+                a.push(document.getElementById("door1"))
+            }
+            if (isDoorWinnerOrChoosen("door2")) {
+                a.push(document.getElementById("door2"))
+            }
+            if (isDoorWinnerOrChoosen("door3")) {
+                a.push(document.getElementById("door3"))
+            }
+            return a;
+        }
+
         function doorClicked(e) {
 
             // In Internet Explorer you should use the global variable `event`  
@@ -36,6 +54,12 @@
                 document.getElementById(id).classList.add('doorChoosen');
                 document.getElementById(id).classList.remove('door');
 
+                // Open a loser door
+                var losers = getDoorsNotChosenAndNotWinner();
+                alert(losers.length);
+                var loserDoorToOpen = Math.floor(Math.random() * losers.length); // arrays are 0 based
+
+                alert(loserDoorToOpen);
             }
             else {
                 alert('a choice has been made');
