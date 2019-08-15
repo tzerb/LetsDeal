@@ -5,8 +5,15 @@
         window.onload = function () {
             // alert('here');
         };
-        function doorClicked() {
-            alert('door clicked');
+        function doorClicked(e) {
+
+            // In Internet Explorer you should use the global variable `event`  
+            e = e || event;
+
+            // In Internet Explorer you need `srcElement`
+            var target = e.target || e.srcElement;
+            var id = target.id;
+            alert('door clicked - ' + id);
         }
     </script>
     <style>
