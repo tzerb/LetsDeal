@@ -62,7 +62,14 @@
 
             }
             else {
-                alert('a choice has been made');
+                if (document.getElementById(id).classList.contains('doorLoser')) {
+                    alert("Don't select the loser you loser");
+                }
+                else if (document.getElementById(id).classList.contains('doorChoosen')) {
+                    alert("User stayed with his selection");
+                } else {
+                    alert("User switched");
+                }
             }
         }
     </script>
