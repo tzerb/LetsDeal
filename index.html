@@ -13,6 +13,7 @@
             document.getElementById("door3").className = "door";
 
             document.getElementById("door" + doorNumber).classList.add("winner");
+            document.getElementById("door" + doorNumber).innerText = "winner";
 
         }
 
@@ -66,9 +67,21 @@
                     alert("Don't select the loser you loser");
                 }
                 else if (document.getElementById(id).classList.contains('doorChoosen')) {
-                    alert("User stayed with his selection");
+                    // User stayed with his selection
+                    if (document.getElementById(id).classList.contains('winner')) {
+                        alert("You're a winner!");
+                    }
+                    else {
+                        alert("You're a loser!");
+                    }
                 } else {
-                    alert("User switched");
+                    // User switched
+                    if (document.getElementById(id).classList.contains('winner')) {
+                        alert("You're a winner!");
+                    }
+                    else {
+                        alert("You're a loser!");
+                    }
                 }
             }
         }
