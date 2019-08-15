@@ -4,7 +4,11 @@
     <script>
         window.onload = function () {
             // alert('here');
+            initGame();
         };
+        function initGame() {
+            alert(Math.floor(Math.random() * 3) + 1);
+        }
         function doorClicked(e) {
 
             // In Internet Explorer you should use the global variable `event`  
