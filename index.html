@@ -13,6 +13,7 @@
             document.getElementById("door3").className = "door";
 
             document.getElementById("door" + doorNumber).classList.add("winner");
+            document.getElementById("door" + doorNumber).innerText = "winner";
 
         }
 
@@ -28,13 +29,13 @@
 
         function getDoorsNotChosenAndNotWinner() {
             var a = [];
-            if (isDoorWinnerOrChoosen("door1")) {
+            if (!isDoorWinnerOrChoosen("door1")) {
                 a.push(document.getElementById("door1"))
             }
-            if (isDoorWinnerOrChoosen("door2")) {
+            if (!isDoorWinnerOrChoosen("door2")) {
                 a.push(document.getElementById("door2"))
             }
-            if (isDoorWinnerOrChoosen("door3")) {
+            if (!isDoorWinnerOrChoosen("door3")) {
                 a.push(document.getElementById("door3"))
             }
             return a;
@@ -57,9 +58,10 @@
                 // Open a loser door
                 var losers = getDoorsNotChosenAndNotWinner();
                 alert(losers.length);
-                var loserDoorToOpen = Math.floor(Math.random() * losers.length); // arrays are 0 based
+                losers.forEach(function (l) {
+                    l.innerText = "loser";
+                });
 
-                alert(loserDoorToOpen);
             }
             else {
                 alert('a choice has been made');
