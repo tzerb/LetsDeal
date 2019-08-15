@@ -13,12 +13,21 @@
             // In Internet Explorer you need `srcElement`
             var target = e.target || e.srcElement;
             var id = target.id;
-            alert('door clicked - ' + id);
+
+            document.getElementById(id).classList.add('doorChoosen');
+            document.getElementById(id).classList.remove('door');
         }
     </script>
     <style>
         .door {
             background-color: blue;
+            width: 100;
+            height: 100;
+            margin: 5;
+        }
+
+        .doorChoosen {
+            background-color: yellow;
             width: 100;
             height: 100;
             margin: 5;
