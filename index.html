@@ -41,6 +41,17 @@
             return a;
         }
 
+        function winner() {
+            alert("You're a winner!");
+
+            initGame();
+        }
+        function loser() {
+            alert("You're a loser!");
+
+            initGame();
+        }
+
         function doorClicked(e) {
 
             // In Internet Explorer you should use the global variable `event`  
@@ -69,18 +80,18 @@
                 else if (document.getElementById(id).classList.contains('doorChoosen')) {
                     // User stayed with his selection
                     if (document.getElementById(id).classList.contains('winner')) {
-                        alert("You're a winner!");
+                        winner();
                     }
                     else {
-                        alert("You're a loser!");
+                        loser();
                     }
                 } else {
                     // User switched
                     if (document.getElementById(id).classList.contains('winner')) {
-                        alert("You're a winner!");
+                        winner();
                     }
                     else {
-                        alert("You're a loser!");
+                        loser();
                     }
                 }
             }
