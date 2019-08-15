@@ -14,8 +14,13 @@
             var target = e.target || e.srcElement;
             var id = target.id;
 
-            document.getElementById(id).classList.add('doorChoosen');
-            document.getElementById(id).classList.remove('door');
+            if (document.getElementById(id).classList.contains('doorChoosen')) {
+                // do nothing
+            }
+            else {
+                document.getElementById(id).classList.add('doorChoosen');
+                document.getElementById(id).classList.remove('door');
+            }
         }
     </script>
     <style>
