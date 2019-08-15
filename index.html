@@ -13,7 +13,6 @@
             document.getElementById("door3").className = "door";
 
             document.getElementById("door" + doorNumber).classList.add("winner");
-            document.getElementById("door" + doorNumber).innerText = "winner";
 
         }
 
@@ -57,10 +56,9 @@
 
                 // Open a loser door
                 var losers = getDoorsNotChosenAndNotWinner();
-                alert(losers.length);
-                losers.forEach(function (l) {
-                    l.innerText = "loser";
-                });
+                var loserDoorToOpen = Math.floor(Math.random() * losers.length); // arrays are 0 based
+                losers[loserDoorToOpen].classList.add("doorLoser");
+                losers[loserDoorToOpen].classList.remove('door');
 
             }
             else {
