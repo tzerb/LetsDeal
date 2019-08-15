@@ -15,6 +15,13 @@
             document.getElementById("door" + doorNumber).classList.add("winner");
 
         }
+
+        function anyDoorChoosen() {
+            return document.getElementById("door1").classList.contains('doorChoosen') ||
+                document.getElementById("door2").classList.contains('doorChoosen') ||
+                document.getElementById("door3").classList.contains('doorChoosen')
+        }
+
         function doorClicked(e) {
 
             // In Internet Explorer you should use the global variable `event`  
@@ -24,12 +31,14 @@
             var target = e.target || e.srcElement;
             var id = target.id;
 
-            if (document.getElementById(id).classList.contains('doorChoosen')) {
-                // do nothing
-            }
-            else {
+            if (!anyDoorChoosen()) {
+                // this is the users first choice
                 document.getElementById(id).classList.add('doorChoosen');
                 document.getElementById(id).classList.remove('door');
+
+            }
+            else {
+                alert('a choice has been made');
             }
         }
     </script>
