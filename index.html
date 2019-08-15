@@ -7,7 +7,13 @@
             initGame();
         };
         function initGame() {
-            alert(Math.floor(Math.random() * 3) + 1);
+            var doorNumber = Math.floor(Math.random() * 3) + 1;
+            document.getElementById("door1").className = "door";
+            document.getElementById("door2").className = "door";
+            document.getElementById("door3").className = "door";
+
+            document.getElementById("door" + doorNumber).classList.add("winner");
+
         }
         function doorClicked(e) {
 
@@ -60,9 +66,9 @@
 
 <body>
     <button onclick="initGame()">Restart</button>
-    <div id="door1" class="door" onclick="doorClicked();">Door 1</div>
-    <div id="door2" class="door" onclick="doorClicked();">Door 2</div>
-    <div id="door3" class="door" onclick="doorClicked();">Door 3</div>
+    <div id="door1" onclick="doorClicked();">Door 1</div>
+    <div id="door2" onclick="doorClicked();">Door 2</div>
+    <div id="door3" onclick="doorClicked();">Door 3</div>
 </body>
 
 </html>
