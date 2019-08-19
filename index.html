@@ -2,22 +2,56 @@
 
 <head>
     <script>
+            let win = 0;
+            let lose = 0;
+            let plays = 0;
         window.onload = function () {
-            // alert('here');
+            //alert('here');
+            
             initGame();
         };
+        function restartGame() {
+            let e1 = document.getElementById('pct');
+            let e2 = document.getElementById('wins');
+            let e3 = document.getElementById('losses');
+            let e4 = document.getElementById('wl');
+          
+            e1.textContent = "";
+            e2.textContent = "";
+            e3.textContent = "";
+            ///is there a better way to clear?, 2 googles said this is how
+            e4.textContent = "PLAY AGAIN";
+            initGame();
+        }
         function initGame() {
+            
             var doorNumber = Math.floor(Math.random() * 3) + 1;
             document.getElementById("door1").className = "door";
             document.getElementById("door2").className = "door";
             document.getElementById("door3").className = "door";
 
             document.getElementById("door" + doorNumber).classList.add("winner");
-            document.getElementById("door" + doorNumber).innerText = "winner";
+           // document.getElementById("door" + doorNumber).innerText = "winner";
+           ///why was this here?
 
         }
+        function showStats(a, b){
+          
+          let e1 = document.getElementById('pct');
+          let e2 = document.getElementById('wins');
+          let e3 = document.getElementById('losses');   
+          
+          let totalPlays = a + b;          
+          let winPercentage = (a / totalPlays * 100).toFixed(2);
 
+          e1.textContent = "Percentage: " + winPercentage;
+          e2.textContent = "Wins: " + win;
+          e3.textContent = "Losses: " + lose;
+       
+        }
         function anyDoorChoosen() {
+            let e1 = document.getElementById('wl');
+            e1.textContent = "STAY OR SWITCH"
             return document.getElementById("door1").classList.contains('doorChoosen') ||
                 document.getElementById("door2").classList.contains('doorChoosen') ||
                 document.getElementById("door3").classList.contains('doorChoosen')
@@ -42,14 +76,30 @@
         }
 
         function winner() {
-            alert("You're a winner!");
+           // alert("You're a winner!");
+           let e1 = document.getElementById('wl');
+           e1.textContent = "WIN"
 
-            initGame();
+           //document.getElementById("door1").style.backgroundColor = "Green";
+           //document.getElementById("door2").style.backgroundColor = "Green";
+           //document.getElementById("door3").style.backgroundColor = "Green";     
+
+            win++;
+            showStats(win, lose);
+            setTimeout(initGame(), 1000);
+            ///I want it to flash green for 5 seconds and then move on
         }
         function loser() {
-            alert("You're a loser!");
+           // alert("You're a loser!");
+           let e1 = document.getElementById('wl');
+           e1.textContent = "LOSE"
+           lose++;
+           //document.getElementById("door1").style.backgroundColor = "Red";
+           //document.getElementById("door2").style.backgroundColor = "Red";
+           //document.getElementById("door3").style.backgroundColor = "Red";     
 
-            initGame();
+            showStats(win, lose);
+            setTimeout(initGame(), 1000);
         }
 
         function doorClicked(e) {
@@ -81,6 +131,7 @@
                     // User stayed with his selection
                     if (document.getElementById(id).classList.contains('winner')) {
                         winner();
+
                     }
                     else {
                         loser();
@@ -89,6 +140,7 @@
                     // User switched
                     if (document.getElementById(id).classList.contains('winner')) {
                         winner();
+                        
                     }
                     else {
                         loser();
@@ -129,10 +181,17 @@
 </head>
 
 <body>
-    <button onclick="initGame()">Restart</button>
+<div>I had to fork your repo from my git account.  Then cloned my repo on my machine and then changed the repo and checked it into my account.  I want to get this in your repo so I created a pull request.  I think this is different when we do VisualStudio.com.
+</div>
+    <button onclick="restartGame()">Restart</button>
     <div id="door1" onclick="doorClicked();">Door 1</div>
     <div id="door2" onclick="doorClicked();">Door 2</div>
     <div id="door3" onclick="doorClicked();">Door 3</div>
+    <h1 id="wl"></h1>
+    <div id="pct"></div>
+    <div id="wins"></div>
+    <div id="losses"></div>
+    
 </body>
 
 </html>
